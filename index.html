@@ -484,17 +484,39 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
   section { padding:80px 24px; }
   
   /* Hero specific mobile layout */
+  h1 { font-size: clamp(42px, 10vw, 52px); } /* ensure name fits beautifully */
+  
   #hero { 
     display: flex;
     flex-direction: column;
-    padding:100px 24px 40px; 
+    padding:90px 24px 40px; /* Reduced top padding */
     text-align: center;
   }
-  .hero-image-wrapper { order: 1; margin-bottom: 20px; width: 100%; }
-  .hero-image { margin-top: 0; max-width: 90%; } /* Reset negative pull-up on mobile to prevent clipping nav */
-  .hero-content { order: 2; align-items: center; text-align: center; width: 100%; }
-  .hero-eyebrow { margin: 0 auto 24px; }
-  .hero-tagline { margin: 0 auto 30px; font-size: 16px;}
+  
+  /* Image wrapper pulled up into negative margin so the text overlaps the transparent fade */
+  .hero-image-wrapper { 
+    order: 1; 
+    margin-bottom: -50px; 
+    width: 100%; 
+    z-index: 1; 
+  } 
+  
+  .hero-image { 
+    margin-top: 0; 
+    max-width: 75%; /* scaled slightly down to ensure it doesn't push things off screen */
+  } 
+  
+  .hero-content { 
+    order: 2; 
+    align-items: center; 
+    text-align: center; 
+    width: 100%; 
+    z-index: 10; /* Keep text visibly above image fade */
+    position: relative; 
+  }
+  
+  .hero-eyebrow { margin: 0 auto 16px; }
+  .hero-tagline { margin: 0 auto 24px; font-size: 15px;}
   
   /* Stack buttons nicely */
   .hero-btns { flex-direction: column; width: 100%; gap: 12px; margin-bottom: 0; }
