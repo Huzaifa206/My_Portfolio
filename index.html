@@ -156,9 +156,6 @@ h3{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700}
   height: auto;
   object-fit: cover;
   margin-top: -90px; /* Pulled upwards */
-  /* This creates the beautiful fade transition at the bottom */
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
   animation: float 8s ease-in-out infinite;
 }
 .hero-eyebrow{
@@ -504,6 +501,8 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
   .hero-image { 
     margin-top: 0; 
     max-width: 75%; /* scaled slightly down to ensure it doesn't push things off screen */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
   } 
   
   .hero-content { 
@@ -578,7 +577,6 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
     <div class="hero-title reveal-delay-1">AI Engineer · Full Stack Developer · Agentic Systems Builder</div>
     <p class="hero-tagline reveal-delay-2">Building Autonomous AI Systems & Modern Web Applications. Pursuing BS AI at Bahria University while engineering the future.</p>
     <div class="hero-btns reveal-delay-3">
-      <!-- ONLY RESUME REMAINS DOWNLOADABLE -->
       <a href="documents/Huzaifa_03xjdf.pdf" download class="btn-primary">↓ Download Resume</a>
       <a href="#projects" class="btn-outline">View Projects →</a>
       <a href="#contact" class="btn-outline">Get In Touch</a>
@@ -586,7 +584,6 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
   </div>
 
   <div class="hero-image-wrapper reveal reveal-delay-2">
-    <!-- REPLACE 'documents/your-photo.png' WITH YOUR ACTUAL IMAGE PATH -->
     <img src="documents/your-photo.png" alt="Huzaifa Ahmed Siddiqui" class="hero-image">
   </div>
 
@@ -1135,7 +1132,6 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
             <div class="cl-value">/Huzaifa206</div>
           </div>
         </a>
-        <!-- ONLY RESUME REMAINS DOWNLOADABLE (.pdf) -->
         <a href="documents/Huzaifa_03xjdf.pdf" download class="contact-link">
           <div class="cl-icon rose">📄</div>
           <div>
@@ -1170,7 +1166,6 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
   <div style="color:var(--text-muted)">AI Engineer · Full Stack Developer · Agentic Systems Builder · Karachi, Pakistan</div>
 </footer>
 
-<!-- MODAL HTML -->
 <div id="fileViewerModal" class="modal">
   <span class="close-btn" onclick="closeViewer()">&times;</span>
   <div id="viewerContent" style="display:flex;justify-content:center;align-items:center;height:100%;width:100%;"></div>
