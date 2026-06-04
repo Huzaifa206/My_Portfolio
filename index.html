@@ -126,14 +126,46 @@ h1{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(52px,6vw,
 h2{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(36px,4vw,56px);line-height:1.1;letter-spacing:-1px}
 h3{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700}
 
-/* === HERO === */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-  padding:0 60px;max-width:1400px;margin:0 auto;padding-top:100px}
+/* === HERO SECTION WITH IMAGE === */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items:center;
+  gap: 40px;
+  padding:120px 60px 40px;
+  max-width:1400px;
+  margin:0 auto;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+.hero-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.hero-image {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  object-fit: cover;
+  /* This creates the beautiful fade transition at the bottom */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  animation: float 8s ease-in-out infinite;
+}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:10px;
   background:rgba(47, 48, 97, 0.08);border:1px solid rgba(47, 48, 97, 0.2);
   padding:8px 18px;border-radius:100px;margin-bottom:36px;
   font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--secondary);
+  width: fit-content;
 }
 .status-dot{width:8px;height:8px;background:var(--secondary);border-radius:50%;
   animation:pulse 2s infinite}
@@ -150,7 +182,7 @@ h3{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700}
   font-size:18px;color:var(--text-muted);max-width:560px;
   line-height:1.7;margin-bottom:48px;font-weight:500;
 }
-.hero-btns{display:flex;gap:14px;margin-bottom:72px;flex-wrap:wrap}
+.hero-btns{display:flex;gap:14px;margin-bottom:40px;flex-wrap:wrap}
 .btn-primary{
   background:var(--grad-1);color:#FFFFFF;
   padding:14px 28px;border-radius:8px;border:none;font-family:'Inter',sans-serif;
@@ -171,7 +203,11 @@ h3{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:700}
 }
 
 /* STATS GRID */
-.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
+  grid-column: 1 / -1; /* Spans across both columns */
+  margin-top: 20px;
+}
 .stat-card{
   background:var(--bg-card);border:1px solid var(--border);
   border-radius:12px;padding:20px 16px;text-align:center;
@@ -445,7 +481,17 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
   nav { padding:16px 24px; }
   .nav-links { display:none; }
   section { padding:80px 24px; }
-  #hero { padding:120px 24px 40px; }
+  
+  /* Hero specific mobile layout */
+  #hero { 
+    grid-template-columns: 1fr; 
+    padding:120px 24px 40px; 
+    text-align: center;
+  }
+  .hero-content { order: 2; align-items: center; text-align: center; }
+  .hero-image-wrapper { order: 1; margin-bottom: 20px; }
+  .hero-eyebrow { margin: 0 auto 36px; }
+  .hero-tagline { margin: 0 auto 40px; }
   
   /* Stack buttons nicely */
   .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
@@ -496,17 +542,25 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
 </nav>
 
 <section id="hero">
-  <div class="hero-eyebrow reveal">
-    <span class="status-dot"></span>
-    Available for Opportunities · Karachi, Pakistan
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">
+      <span class="status-dot"></span>
+      Available for Opportunities · Karachi, Pakistan
+    </div>
+    <h1 class="hero-name">Huzaifa<br>Ahmed<br>Siddiqui</h1>
+    <div class="hero-title reveal-delay-1">AI Engineer · Full Stack Developer · Agentic Systems Builder</div>
+    <p class="hero-tagline reveal-delay-2">Building Autonomous AI Systems & Modern Web Applications. Pursuing BS AI at Bahria University while engineering the future.</p>
+    <div class="hero-btns reveal-delay-3">
+      <!-- ONLY RESUME REMAINS DOWNLOADABLE -->
+      <a href="documents/Huzaifa_03xjdf.pdf" download class="btn-primary">↓ Download Resume</a>
+      <a href="#projects" class="btn-outline">View Projects →</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
   </div>
-  <h1 class="hero-name reveal">Huzaifa<br>Ahmed<br>Siddiqui</h1>
-  <div class="hero-title reveal reveal-delay-1">AI Engineer · Full Stack Developer · Agentic Systems Builder</div>
-  <p class="hero-tagline reveal reveal-delay-2">Building Autonomous AI Systems & Modern Web Applications. Pursuing BS AI at Bahria University while engineering the future.</p>
-  <div class="hero-btns reveal reveal-delay-3">
-    <a href="documents/Huzaifa_03xjdf.pdf" download class="btn-primary">↓ Download Resume</a>
-    <a href="#projects" class="btn-outline">View Projects →</a>
-    <a href="#contact" class="btn-outline">Get In Touch</a>
+
+  <div class="hero-image-wrapper reveal reveal-delay-2">
+    <!-- REPLACE 'documents/your-photo.png' WITH YOUR ACTUAL IMAGE PATH -->
+    <img src="documents/your-photo.png" alt="Huzaifa Ahmed Siddiqui" class="hero-image">
   </div>
 
   <div class="stats-grid reveal">
@@ -1054,6 +1108,7 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
             <div class="cl-value">/Huzaifa206</div>
           </div>
         </a>
+        <!-- ONLY RESUME REMAINS DOWNLOADABLE (.pdf) -->
         <a href="documents/Huzaifa_03xjdf.pdf" download class="contact-link">
           <div class="cl-icon rose">📄</div>
           <div>
@@ -1088,6 +1143,7 @@ footer{text-align:center;padding:40px;border-top:1px solid var(--border);font-si
   <div style="color:var(--text-muted)">AI Engineer · Full Stack Developer · Agentic Systems Builder · Karachi, Pakistan</div>
 </footer>
 
+<!-- MODAL HTML -->
 <div id="fileViewerModal" class="modal">
   <span class="close-btn" onclick="closeViewer()">&times;</span>
   <div id="viewerContent" style="display:flex;justify-content:center;align-items:center;height:100%;width:100%;"></div>
